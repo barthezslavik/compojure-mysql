@@ -9,8 +9,14 @@
 (k/defentity document
   (k/table "documents"))
 
-(defn home []
+(defn all-documents []
   (generate-string (k/select document)))
 
+(defn single-document [id]
+  (generate-string
+    (k/select document
+      (k/where {:id id}))))
+
 (defroutes home-routes
-  (GET "/" [] (home)))
+  (GET "/documents" [] (all-documents))
+  (GET "/documents/:id" [id] (single-document id)))
