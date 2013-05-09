@@ -5,9 +5,16 @@
             [hiccup.middleware :refer [wrap-base-url]]
             [compojure.handler :as handler]
             [compojure.route :as route]
+            [korma.db :as db]
             [compojure-mysql.routes.home :refer [home-routes]]))
 
 (defn init []
+  (db/defdb db
+    (db/mysql {:host "localhost"
+               :port "3306"
+               :db "clojure-learn"
+               :user "root"
+               :password ""}))
   (println "compojure-mysql is starting"))
 
 (defn destroy []
