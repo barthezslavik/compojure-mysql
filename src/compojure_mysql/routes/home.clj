@@ -14,8 +14,9 @@
 
 (defn single-document [id]
   (generate-string
-    (k/select document
-      (k/where {:id id}))))
+    (first
+      (k/select document
+        (k/where {:id id})))))
 
 (defroutes home-routes
   (GET "/documents" [] (all-documents))
