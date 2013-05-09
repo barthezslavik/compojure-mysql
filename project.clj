@@ -6,6 +6,8 @@
                  [hiccup "1.0.3"]
                  [mysql/mysql-connector-java "5.1.6"]
                  [korma "0.3.0-RC5"]
+                 [cheshire "5.1.1"]
+                 [ring/ring-json "0.2.0"]
                  [ring-server "0.2.8"]]
   :plugins [[lein-ring "0.8.5"]]
   :ring {:handler compojure-mysql.handler/war-handler
