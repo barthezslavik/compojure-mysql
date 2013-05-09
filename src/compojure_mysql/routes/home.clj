@@ -13,9 +13,11 @@
              :user "root"
              :password ""}))
 
+(k/defentity document
+  (k/table "documents"))
+
 (defn home []
-  ;(layout/common [:h1 "Hello World!"]))
-  (generate-string ["Clojure as a Service"]))
+  (generate-string (k/select document)))
 
 (defroutes home-routes
   (GET "/" [] (home)))
