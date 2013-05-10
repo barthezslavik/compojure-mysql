@@ -1,22 +1,21 @@
 (ns compojure-mysql.routes.home
   (:require [compojure.core :refer :all]
-            [korma.core :as k]
-            [ring.middleware.json :as j]
+            [korma.core :refer :all]
             [cheshire.core :refer :all]
             [compojure-mysql.views.layout :as layout]))
 
 
-(k/defentity document
-  (k/table "documents"))
+(defentity document
+  (table "documents"))
 
 (defn all-documents []
-  (generate-string (k/select document)))
+  (generate-string (select document)))
 
 (defn single-document [id]
   (generate-string
     (first
-      (k/select document
-        (k/where {:id id})))))
+      (select document
+        (where {:id id})))))
 
 (defroutes home-routes
   (GET "/documents" [] (all-documents))
